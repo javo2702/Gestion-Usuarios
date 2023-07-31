@@ -1,0 +1,38 @@
+<div class="h-full bg-image flex flex-col justify-between">
+    <div class="flex p-4">
+      <img class="h-14 w-auto" src="./assets/imagenes/logo.png" alt="Emape">
+    </div>
+    <div class="w-96 border border-gray-200 bg-white rounded-lg mx-auto my-auto flex flex-col justify-center p-6">
+        <div class="sm:mx-auto sm:w-full ">
+          <h2 class="mt-2 text-center text-xl font-bold leading-9 tracking-tight text-gray-900">Sistema de Gestion de Usuarios</h2>
+        </div>
+      
+        <div class="mt-6 sm:mx-auto sm:w-full">
+          <div class="space-y-6">
+            <div>
+              <label for="user" class="block text-sm font-medium leading-6 text-gray-900">Usuario:</label>
+              <div class="mt-2">
+                <input id="user" name="user" type="text" autocomplete="user" placeholder="Ingrese usuario" #user required class="block h-12 w-full rounded-md border-0 px-4 py-1.5 text-gray-900 shadow-sm ring-[.4px] ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-inset focus:ring-sky-800 sm:text-sm sm:leading-6">
+              </div>
+            </div>
+      
+            <div>
+              <div class="flex items-center justify-between">
+                <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Contraseña:</label>
+                <div class="text-sm">
+                  <a href="#" class="font-semibold text-blue-800 hover:text-blue-600">¿Olvidó su contraseña?</a>
+                </div>
+              </div>
+              <div class="mt-2">
+                <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Ingrese contraseña" #password required class="block h-12 w-full rounded-md border-0 px-4 py-1.5 text-gray-900 shadow-sm ring-[.4px] ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-inset focus:ring-sky-950 sm:text-sm sm:leading-6">
+              </div>
+            </div>
+      
+            <div>
+              <button class="flex h-10 w-full justify-center items-center rounded-md bg-sky-900 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-sky-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600" (click)="log_in(user.value,password.value)">Iniciar Sesión</button>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  
