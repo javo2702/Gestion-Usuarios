@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./mantenimiento.component.css']
 })
 export class MantenimientoComponent {
-
+  
   sedes: Sede[] = [
     {id:1,nombre: "Sede 1",ubicacion: "Ubicacion 1"},
     {id:2,nombre: "Sede 2",ubicacion: "Ubicacion 2"},

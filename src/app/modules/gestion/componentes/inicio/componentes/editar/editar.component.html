@@ -1,0 +1,121 @@
+<div class="w-11/12 mx-auto">
+    <h3 class="text-gray-500 text-[18px] mt-4">Editar Usuario: [ <span class="text-sky-800">{{usuario?.usuario}}</span> ] <span class="text-sky-800 font-semibold">{{usuario?.nombres}} {{usuario?.ape_paterno}} {{usuario?.ape_materno}}</span></h3>
+    <div [formGroup]="usuarioEditarForm" class="py-3 space-y-6 ">
+        <div class="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-4">
+            <div class="grid grid-col-1 md:grid-col-2 md:gap-4">
+                <div class="md:col-start-1 mt-2 h-[50px] relative">
+                    <label class="absolute ml-2 z-20 text-sky-700 text-sm px-2 bg-white" for="dni">Usuario</label>
+                    <input type="number" name="user" id="user" autocomplete="dni" formControlName="usuario" placeholder="Usuario" class="absolute bottom-0 block p-4 h-10 w-full rounded-[3px] border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-inset focus:ring-sky-700 text-sm leading-6">
+                </div>
+                <div class="md:col-start-2 mt-2 h-[50px] relative">
+                    <label class="absolute ml-2 z-20 text-sky-700 text-sm px-2 bg-white" for="dni">DNI</label>
+                    <input type="number" name="dni" id="dni" autocomplete="dni" formControlName="dni" placeholder="Número de DNI" class="absolute bottom-0 block p-4 h-10 w-full rounded-[3px] border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-inset focus:ring-sky-700 text-sm leading-6">
+                </div>
+            </div>
+            <div class="mt-2 h-[50px] relative">
+                <label class="absolute ml-2 z-20 text-sky-700 text-sm px-2 bg-white" for="name">Nombres</label>
+                <input type="text" name="name" id="name" autocomplete="name" formControlName="nombres" placeholder="Nombres" class="absolute bottom-0 block p-4 h-10 w-full rounded-[3px] border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-inset focus:ring-sky-700 text-sm leading-6">
+            </div>
+            <div class="mt-2 h-[50px] relative">
+                <label class="absolute ml-2 z-20 text-sky-700 text-sm px-2 bg-white" for="ape_paterno">Apellido Paterno</label>
+                <input type="text" name="ape_paterno" id="ape_paterno" autocomplete="ape_paterno" formControlName="ape_paterno" placeholder="Apellido Paterno" class="absolute bottom-0 block p-4 h-10 w-full rounded-[3px] border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-inset focus:ring-sky-700 text-sm leading-6">
+            </div>
+            <div class="mt-2 h-[50px] relative">
+                <label class="absolute ml-2 z-20 text-sky-700 text-sm px-2 bg-white" for="ape_materno">Apellido Materno</label>
+                <input type="text" name="ape_materno" id="ape_materno" autocomplete="ape_materno" formControlName="ape_materno" placeholder="Apellido Materno" class="absolute bottom-0 block p-4 h-10 w-full rounded-[3px] border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-inset focus:ring-sky-700 text-sm leading-6">
+            </div>
+            <div class="mt-2 h-[50px] relative">
+                <label class="absolute ml-2 z-20 text-sky-700 text-sm px-2 bg-white" for="sede">Sede</label>
+                <select id="sede" name="sede" autocomplete="sede" formControlName="sede" class="absolute bottom-0 block p-4 h-10 w-full rounded-[3px] border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-sky-700 text-sm leading-6">
+                <option value="-1" selected>-- SEDE --</option>
+                <option *ngFor="let s of sedes" value="{{s.id}}">{{s.nombre}}</option>
+                </select>
+            </div>
+            <div class="mt-2 h-[50px] relative">
+                <label class="absolute ml-2 z-20 text-sky-700 text-sm px-2 bg-white" for="area">Área</label>
+                <select id="area" name="area" autocomplete="area" formControlName="area" class="absolute bottom-0 block p-4 h-10 w-full rounded-[3px] border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-sky-700 text-sm leading-6">
+                <option value="-1" selected>-- AREA --</option>
+                <option *ngFor="let a of areas" value="{{a.id}}">{{a.nombre}}</option>
+                </select>
+            </div>
+            <div class="mt-2 h-[50px] relative">
+                <label class="absolute ml-2 z-20 text-sky-700 text-sm px-2 bg-white" for="cargo">Cargo</label>
+                <select id="cargo" name="cargo" autocomplete="cargo" formControlName="cargo" class="absolute bottom-0 block p-4 h-10 w-full rounded-[3px] border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-sky-700 text-sm leading-6">
+                <option value="" selected>-- CARGO --</option>
+                <option *ngFor="let c of cargos" value="{{c.id}}">{{c.nombre}}</option>
+                </select>
+            </div>
+            <div class="mt-2 h-[50px] relative w-full">
+                <label class="absolute ml-2 z-20 text-sky-700 text-sm px-2 bg-white" for="estado">Estado</label>
+                <select id="estado" name="estado" autocomplete="estado" formControlName="estado" class="absolute bottom-0 block p-4 h-10 w-full rounded-[3px] border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-inset focus:ring-sky-700 text-sm leading-6">
+                <option value="-1" selected>-- ESTADO --</option>
+                <option *ngFor="let e of estado" value="{{e.id}}">{{e.estado}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="border-t pt-4">
+            <div class="grid grid-cols-1 md:flex md:flex-row items-center gap-2 pb-2">
+                <p>Sistemas:</p>
+                <div class="flex flex-row gap-2 w-full">
+                    <input type="text" name="sistema" id="sistema" autocomplete="sistema" placeholder="Ingrese nombre para buscar" class="block w-full p-4 h-8 rounded-[3px] border-0 py-1.5 text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-inset focus:ring-sky-700 sm:text-sm">
+                    <div class="w-[150px]">
+                        <a (click)="buscarSistema()" class="flex flex-row items-center justify-center gap-1 p-4 h-8 w-full py-1.5 text-center text-white text-sm rounded-[3px] bg-sky-600 hover:bg-sky-800 hover:cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z" clip-rule="evenodd" />
+                            </svg>                                  
+                            Buscar
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="flex flex-row justify-between bg-sky-800 mt-2 p-2 text-white">
+                <p class="text-sm ml-2">Nombre:</p>
+                <p class="text-sm ml-2 mr-40">Rol:</p>
+            </div>
+            <div *ngIf="loading" class="flex items-center justify-center h-[185px]">
+                <div role="status">
+                    <svg aria-hidden="true" class="w-8 h-8 mr-2 text-gray-200 animate-spin fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/><path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/></svg>
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            <div *ngIf="!loading">
+                <ul class="w-full text-sm font-medium text-gray-900 bg-white h-[300px] overflow-y-scroll">
+                    <li *ngFor="let s of sistemasShow" class="w-full border border-gray-200 rounded-sm ">
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="flex items-center pl-3">
+                                <input (input)="s.select=!s.select" id="{{s.nombre}}-checkbox" type="checkbox" [checked]="s.select" class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500">
+                                <label for="{{s.nombre}}-checkbox" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 hover:cursor-pointer hover:text-sky-700">{{s.nombre}}</label>
+                            </div>
+                            <div *ngIf="s.select" class="flex flex-row gap-2 items-center justify-center">
+                                <div *ngFor="let r of roles" class="flex flex-row items-center justify-center gap-1">
+                                    <input (input)="s.rol = r.id" type="radio" [checked]="s.rol === r.id" name="{{s.nombre}}-{{s.id}}" id="{{s.nombre}}-{{r.id}}" class="h-4 w-4">
+                                    <label for="{{s.nombre}}-{{r.id}}">{{r.nombre}}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li *ngIf="!filter" (click)="noFilter(filter)" class="flex items-center justify-center py-2 hover:bg-gray-100 hover:cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7 fill-gray-300">
+                            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z" clip-rule="evenodd" />
+                        </svg>  
+                        <p class="ml-1 text-gray-300">Mostrar Todos</p>
+                    </li>
+                    <li *ngIf="filter" (click)="noFilter(filter)" class="flex items-center justify-center py-2 hover:bg-gray-100 hover:cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7 fill-gray-300">
+                            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm3 10.5a.75.75 0 000-1.5H9a.75.75 0 000 1.5h6z" clip-rule="evenodd" />
+                          </svg>
+                            
+                        <p class="ml-1 text-gray-300">Mostrar Seleccionados</p>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+    <!-- Modal footer -->
+    <div class="flex items-center justify-end p-4 space-x-2 border-t border-gray-200 rounded-b">
+        <button (click)="save()" data-modal-hide="defaultModal" type="button" class="text-white bg-green-700 hover:bg-green-800 focus:ring-1 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Guardar</button>
+        <button routerLink="" data-modal-hide="defaultModal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-1 focus:outline-none focus:ring-red-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 focus:z-10">Cancelar</button>
+    </div>
+</div>

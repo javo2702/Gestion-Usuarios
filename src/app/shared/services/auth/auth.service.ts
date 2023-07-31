@@ -42,7 +42,7 @@ export class AuthService {
       }
     });*/
   }
-  sign_in(usuario:string,clave:string){
+  sign_in(usuario:string,clave:string):Promise<string>{
     const md5 = new Md5();
     const claveMD5 = md5.appendStr(clave).end()
     const user = {
@@ -54,19 +54,26 @@ export class AuthService {
     const httpOptions = {
       headers: headers_object
     };
-    this.http.post<any>(environment.BASE_URL + "api-security/v1/login",user,httpOptions).subscribe(
-      (data)=>{
-        console.log(data)
-        this.localStorage.removeData(TOKEN_NAME)
-        this.localStorage.saveData(TOKEN_NAME,data.token)
-        this.localStorage.saveData(AUTHENTICATE_NAME,"true")
-        this.router.navigate(['/welcome'])
-      },
-      (error)=>{
-        console.log(error)
-        alert("Ingrese Credenciales Correctas")
-      }
-    );
+    return new Promise((resolve,reject)=>{
+      this.http.post<any>(environment.BASE_URL + "api-security/v1/login",user,httpOptions).subscribe(
+        (data)=>{
+          console.log(data)
+          resolve("Inicio de Sesion Exitoso")
+          this.localStorage.removeData(TOKEN_NAME)
+          this.localStorage.saveData(TOKEN_NAME,data.token)
+          this.localStorage.saveData(AUTHENTICATE_NAME,"true")
+          /*this.localStorage.removeData(TOKEN_NAME)
+          this.localStorage.saveData(TOKEN_NAME,data.token)
+          this.localStorage.saveData(AUTHENTICATE_NAME,"true")
+          this.router.navigate(['/welcome'])*/
+        },
+        (error)=>{
+          console.log(error)
+          reject(error)
+        }
+      );
+    })
+    
   }
   getInfo():Promise<UserInfo>{
     const token = localStorage.getItem(TOKEN_NAME); 

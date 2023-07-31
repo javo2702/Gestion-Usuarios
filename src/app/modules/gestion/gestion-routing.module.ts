@@ -11,11 +11,17 @@ const routes: Routes = [
     children: [
       {
         path: 'welcome',
-        component: InicioComponent
+        loadChildren: () => 
+        import('../gestion/componentes/inicio/inicio.module').then(
+          (m) => m.InicioModule
+        )
       },
       {
         path: 'mantenimiento',
-        component: MantenimientoComponent
+        loadChildren: () => 
+        import('../gestion/componentes/mantenimiento/mantenimiento.module').then(
+          (m) => m.MantenimientoModule
+        )
       }
     ]
   }

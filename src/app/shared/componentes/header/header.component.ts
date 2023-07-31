@@ -10,6 +10,7 @@ import { AuthService } from '../../services/auth/auth.service';
 export class HeaderComponent implements OnInit{
   user:UserInfo|undefined
   showMobile:boolean = false
+  showOptions:boolean = false
   constructor(private auth:AuthService){
 
   }
@@ -23,6 +24,7 @@ export class HeaderComponent implements OnInit{
       },
       (error)=>{
         console.log(error)
+        this.log_out()
       }
     )
   }
